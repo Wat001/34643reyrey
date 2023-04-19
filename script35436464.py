@@ -24,4 +24,4 @@ while True:
         frequency = 440
         winsound.Beep(frequency, duration)
 
-    time.sleep(1)
+    time.sleep(0.25)
