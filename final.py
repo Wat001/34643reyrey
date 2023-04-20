@@ -3,7 +3,7 @@ from selenium import webdriver
 import time
 
 url = "https://www.roblox.com/groups/3576655/Zombie-Attack-Official#!/about"
-text_to_check = "(E|e)mir"
+text_to_check = r"\b[eE][mM][iI][rR]\b"
 ignore_text = "(D|d)emir"
 
 driver = webdriver.Chrome()
@@ -17,4 +17,3 @@ while True:
             print(f"bulundu! '{match}'")
             
     time.sleep(0.25)
-
