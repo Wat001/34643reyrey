@@ -13,9 +13,10 @@ matched_strings = set()
 
 while True:
     page_source = driver.page_source
-    matches = re.findall(text_to_check, page_source, re.IGNORECASE | re.S)
+    matches = re.findall(text_to_check, page_source, re.IGNORECASE)
     for match in matches:
         if match not in matched_strings and not re.search(ignore_text, match):
             print(f"bulundu! {match}")
             matched_strings.add(match)
     time.sleep(0.25)
+
