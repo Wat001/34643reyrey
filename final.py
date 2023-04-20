@@ -3,7 +3,7 @@ from selenium import webdriver
 import time
 
 url = input("Enter URL to monitor: ")
-text_to_check = "(E|e)mir.*"
+text_to_check = "^(E|e)mir.*"
 ignore_text = "(D|d)emir.*"
 
 driver = webdriver.Chrome()
@@ -18,10 +18,10 @@ while True:
     new_names = set(filtered_names) - matched_usernames
     if new_names:
         print("bulundu!")
-        with open("isimler.txt", "a") as f:
+        with open("isimler.txt", "a", encoding="utf-8") as f:
+
             for name in new_names:
                 f.write(name + "\n")
         matched_usernames |= new_names
 
     time.sleep(0.25)
-
