@@ -3,7 +3,7 @@ from selenium import webdriver
 import time
 
 url = "https://www.roblox.com/groups/3576655/Zombie-Attack-Official#!/about"
-text_to_check = r".*\b[eE][mM][iI][rR]\b.*"
+text_to_check = r"\b[eE][mM][iI][rR]\w*\b"
 ignore_text = "(D|d)emir"
 
 driver = webdriver.Chrome()
