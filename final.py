@@ -9,9 +9,13 @@ ignore_text = "(D|d)emir"
 driver = webdriver.Chrome()
 driver.get(url)
 
+matched_strings = set()
+
 while True:
     page_source = driver.page_source
-    if re.search(text_to_check, page_source) and not re.search(ignore_text, page_source):
-        print("bulundu!")
-        
+    matches = re.findall(text_to_check, page_source)
+    for match in matches:
+        if match not in matched_strings and not re.search(ignore_text, match):
+            print(f"bulundu! {match}")
+            matched_strings.add(match)
     time.sleep(0.25)
