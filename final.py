@@ -9,11 +9,17 @@ ignore_text = "(D|d)emir"
 driver = webdriver.Chrome()
 driver.get(url)
 
+matched_usernames = set()
+
 while True:
     page_source = driver.page_source
-    if re.search(text_to_check, page_source) and not re.search(ignore_text, page_source):
+    matched_names = re.findall(text_to_check, page_source)
+    filtered_names = [name for name in matched_names if not re.search(ignore_text, name)]
+    new_names = set(filtered_names) - matched_usernames
+    if new_names:
         print("bulundu!")
         with open("isimler.txt", "a") as f:
-            f.write(re.findall(text_to_check, page_source)[0] + "\n")
+            f.write("\n".join(new_names) + "\n")
+        matched_usernames |= new_names
 
     time.sleep(0.25)
