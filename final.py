@@ -3,7 +3,7 @@ from selenium import webdriver
 import time
 
 url = input("Enter URL to monitor: ")
-text_to_check = "^(E|e)mir.*"
+text_to_check = ("^(E|e)mir.*") 
 ignore_text = "(D|d)emir.*"
 
 driver = webdriver.Chrome()
